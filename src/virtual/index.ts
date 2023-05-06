@@ -8,10 +8,11 @@ import { capFirst } from "@/utils";
  */
 export default async function loadVirtual(to: any) {
   return new Promise((resolve) => {
-    const routerName = to.routerName;
+    const name = to.name;
+    console.log(capFirst(name, false))
     router.addRoute("Dashboard", {
-      path: `${capFirst(routerName, false)}`,
-      name: `${capFirst(routerName)}`,
+      path: `${capFirst(name, false)}`,
+      name: `${capFirst(name)}`,
       meta: {
         title: `动态路由`,
         iconPrefix: "custom",
@@ -20,7 +21,7 @@ export default async function loadVirtual(to: any) {
       },
       component: () =>
         import("@/virtual/index.vue").then((res) => {
-          res.default.name = capFirst(routerName);
+          res.default.name = capFirst(name);
           return res;
         }),
     });

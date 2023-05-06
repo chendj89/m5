@@ -5,12 +5,15 @@
 import loadVirtual from "@/virtual";
 
 const router = useRouter();
+/**
+ * 添加动态路由
+ */
 const addRoute = () => {
-  const routerName = "Virtual1";
-  if (!router.hasRoute(routerName)) {
-    loadVirtual({ routerName });
+  const name = "virtual1";
+  if (!router.hasRoute(name)) {
+    loadVirtual({ name });
   }
-  router.push(routerName);
+  router.push(name);
 };
 </script>
 

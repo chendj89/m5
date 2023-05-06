@@ -24,7 +24,6 @@ function usePermissionGuard() {
       visitedRouteStore.getVisitedRoutes.map(async (item: any) => {
         console.log("注册动态路由：", item.name);
         if (!router.hasRoute(item.name)) {
-         
           await loadVirtual(item);
         }
       });
@@ -32,7 +31,6 @@ function usePermissionGuard() {
         let id = to.path.replace("/index/virtual", "");
         console.log("注册初次动态路由：", to.path);
         if (!router.hasRoute(`Virtual${id}`)) {
-        
           await loadVirtual(to);
         }
       }
