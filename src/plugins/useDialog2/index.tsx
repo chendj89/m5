@@ -1,5 +1,11 @@
 import { createVNode, render, defineComponent, ref } from "vue";
-import { NModal, NConfigProvider, zhCN, dateZhCN } from "naive-ui";
+import {
+  NModal,
+  NConfigProvider,
+  zhCN,
+  dateZhCN,
+  NMessageProvider,
+} from "naive-ui";
 const tpl = defineComponent({
   props: ["com", "opts"],
   setup() {
@@ -38,29 +44,31 @@ const tpl = defineComponent({
     const { title, ...rest } = this.$props.opts;
     return (
       <NConfigProvider locale={zhCN} date-locale={dateZhCN}>
-        <NModal
-          v-model:show={this.show}
-          onClose={onClose}
-          preset="dialog"
-          title="Dialog"
-          maskClosable={false}
-          style="--n-padding:16px;--n-close-margin:16px 16px 0 0;margin-top:200px"
-          show-icon={false}
-        >
-          {{
-            action: () => <div id="footer"></div>,
-            default: () =>
-              this.loaded
-                ? h(this.$props.com, {
-                    onSuccess,
-                    onCancel,
-                    onClose,
-                    ...rest,
-                  })
-                : null,
-            header: () => title,
-          }}
-        </NModal>
+        <NMessageProvider>
+          <NModal
+            v-model:show={this.show}
+            onClose={onClose}
+            preset="dialog"
+            title="Dialog"
+            maskClosable={false}
+            style="--n-padding:16px;--n-close-margin:16px 16px 0 0;margin-top:200px"
+            show-icon={false}
+          >
+            {{
+              action: () => <div id="footer"></div>,
+              default: () =>
+                this.loaded
+                  ? h(this.$props.com, {
+                      onSuccess,
+                      onCancel,
+                      onClose,
+                      ...rest,
+                    })
+                  : null,
+              header: () => title,
+            }}
+          </NModal>
+        </NMessageProvider>
       </NConfigProvider>
     );
   },

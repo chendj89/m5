@@ -24,6 +24,18 @@ export const asyncRoutes = [
           icon: "menu",
         },
       },
+      {
+        path: "repo",
+        name: "Repo",
+        component: () => import("@/views/index/repo.vue"),
+        meta: {
+          title: "仓库",
+          affix: true,
+          cacheable: true,
+          iconPrefix: "icon",
+          icon: "menu",
+        },
+      },
     ],
   },
 ];
