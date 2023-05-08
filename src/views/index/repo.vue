@@ -27,14 +27,15 @@ import lookup from "./dialog/lookup";
 
 const add = () => {
   let opts: IIssue = {
-    label: "跑车",
-    key: "跑车",
+    label: "跑车2",
+    key: "跑车3",
     icon: "",
     url: "",
     level: 1,
     desc: "",
     badge: { type: "success" },
   };
+  tree.value.push(opts)
   addIssue("ii3", opts);
 };
 interface IIssue {
