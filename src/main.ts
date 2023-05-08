@@ -20,5 +20,5 @@ function vawBoot() {
   useRouterGuard();
   app.mount("#app");
 }
-
+console.log("来自work的留言")
 vawBoot();
