@@ -1,8 +1,13 @@
 <template>
-  <n-button type="primary" @click="addRoute">添加路由</n-button>
+  <div>
+    <uDropdown v-model="options" size="small">
+      <n-button type="primary">添加路由</n-button>
+    </uDropdown>
+  </div>
 </template>
 <script lang="ts" setup name="Index">
 import loadVirtual from "@/virtual";
+import uDropdown from "@/unity/uDropdown";
 
 const router = useRouter();
 /**
@@ -15,6 +20,13 @@ const addRoute = () => {
   }
   router.push(name);
 };
+
+const options = [
+  {
+    label: "用户名",
+    key: "username",
+  },
+];
 </script>
 
 <style scoped></style>
